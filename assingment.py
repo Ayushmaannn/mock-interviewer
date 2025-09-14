@@ -10,7 +10,7 @@ import re
 # Configure Gemini API
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-# --- Helper functions (same as before, shortened here for clarity) ---
+#Response functions
 def get_gemini_response(prompt_text, chat_history=None, retries=3):
     model_name = "gemini-2.5-flash-lite"
     model = genai.GenerativeModel(model_name)
@@ -110,8 +110,8 @@ page = st.sidebar.radio("Go to", ["Candidate Interview", "HR Login"])
 
 # --- Candidate Interview Page ---
 if page == "Candidate Interview":
-    st.set_page_config(page_title="AI Excel Interviewer", page_icon="📊")
-    st.title("📊 AI Excel Interviewer")
+    st.set_page_config(page_title="AI Excel Mock Interviewer", page_icon="📊")
+    st.title("📊 AI Excel Mock Interviewer")
 
     st.sidebar.header("Interview Controls")
     user_name_input = st.sidebar.text_input("Enter your Name")
@@ -197,7 +197,7 @@ if page == "Candidate Interview":
     else:
         st.info("Please enter your name and click 'Start Interview'.")
 
-# --- HR Login Page ---
+# --- HR Login Page
 elif page == "HR Login":
     st.header("🔑 HR Login")
     hr_username = st.text_input("HR Username")
@@ -215,3 +215,4 @@ elif page == "HR Login":
                 st.info("No reports available yet.")
         else:
             st.error("❌ Invalid HR credentials")
+
